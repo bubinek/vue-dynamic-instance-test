@@ -52,6 +52,12 @@
                 }
             },
         },
+
+        methods: {
+            getDialogData() {
+                return this.data
+            },
+        }
     }
 </script>
 

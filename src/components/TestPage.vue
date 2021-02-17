@@ -4,8 +4,12 @@
             Create Instance
         </button>
 
+        <button @click="callRef">
+            Call ref on 1st instance
+        </button>
+
         <div v-for="dialog in instances">
-            <Dialog :key="dialog.id" :data="dialog" @close="destroyInstance" />
+            <Dialog :key="dialog.id" :ref="`dialog-${dialog.id}`" :data="dialog" @close="destroyInstance" />
         </div>
     </div>
 </template>
@@ -39,6 +43,14 @@
 
             destroyInstance(instance) {
                 this.instances.splice(this.instances.findIndex(dialog => dialog.id === instance.id), 1)
+            },
+
+            callRef() {
+                if (this.instances.length < 1) {
+                    return
+                }
+
+                console.log(this.$refs[`dialog-${this.instances[0].id}`][0].getDialogData())
             },
         },
     }
