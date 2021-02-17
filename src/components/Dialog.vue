@@ -11,6 +11,10 @@
         </div>
 
         <div>
+            <component :is="dynamicComponent" />
+        </div>
+
+        <div>
             <button @click="$emit('close', data)">
                 Destroy instance
             </button>
@@ -19,11 +23,33 @@
 </template>
 
 <script>
+    const TypeA = () => import('./widgets/TypeA')
+    const TypeB = () => import('./widgets/TypeB')
+    const TypeC = () => import('./widgets/TypeC')
+
     export default {
         props: {
             data: {
                 type: Object,
                 required: true,
+            },
+        },
+
+        computed: {
+            dynamicComponent() {
+                switch (this.data.component) {
+                    case 'TypeA':
+                        return TypeA
+
+                    case 'TypeB':
+                        return TypeB
+
+                    case 'TypeC':
+                        return TypeC
+
+                    default:
+                        throw new Error(`Unknown component type: "${this.data.component}"`)
+                }
             },
         },
     }

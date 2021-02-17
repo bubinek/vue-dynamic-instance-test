@@ -12,7 +12,7 @@
 
 <script>
     import {v4 as uuidv4} from 'uuid'
-    import Dialog from './Dialog.vue'
+    import Dialog from './Dialog'
 
     export default {
         components: {
@@ -27,10 +27,13 @@
 
         methods: {
             createInstance() {
+                const components = ['TypeA', 'TypeB', 'TypeC']
+
                 this.instances.push({
                     id: uuidv4(),
                     x: Math.floor(Math.random() * 10),
                     y: Math.floor(Math.random() * 10),
+                    component: components[Math.floor(Math.random() * components.length)],
                 })
             },
 
