@@ -6,6 +6,7 @@
 
 <style>
     .type-b {
+        padding: 16px;
         color: #fff;
         background: #0f0;
     }

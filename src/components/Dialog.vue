@@ -16,7 +16,7 @@
 
         <div>
             <button @click="$emit('close', data)">
-                Destroy instance
+                Destroy Instance
             </button>
         </div>
     </div>

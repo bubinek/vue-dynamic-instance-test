@@ -38,7 +38,7 @@
             },
 
             destroyInstance(instance) {
-                this.instances.splice(this.instances.find(dialog => dialog.id === instance.id), 1)
+                this.instances.splice(this.instances.findIndex(dialog => dialog.id === instance.id), 1)
             },
         },
     }
